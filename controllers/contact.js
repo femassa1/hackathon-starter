@@ -12,7 +12,7 @@ exports.getContact = (req, res) => {
 
   res.render('contact', {
     title: 'Contact',
-    sitekey: process.env.RECAPTCHA_SITE_KEY,
+    sitekey: `${process.env.RECAPTCHA_SITE_KEY}`,
     unknownUser,
   });
 };
@@ -59,9 +59,11 @@ exports.postContact = async (req, res) => {
     }
 
     let transportConfig;
-    if (process.env.SENDGRID_API_KEY) {
+    // if (process.env.SENDGRID_API_KEY) {
+    if ('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') {  
       transportConfig = nodemailerSendgrid({
-        apiKey: process.env.SENDGRID_API_KEY
+        // apiKey: process.env.SENDGRID_API_KEY
+        apiKey: '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'
       });
     } else {
       transportConfig = {
